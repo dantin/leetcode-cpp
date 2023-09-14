@@ -1,6 +1,9 @@
 #include <iostream>
 #include <unordered_map>
 #include <vector>
+
+#include "utils.h"
+
 using namespace std;
 
 class Solution {
@@ -22,31 +25,19 @@ public:
     }
 };
 
-void print_vector(vector<int> nums)
-{
-    cout << "[";
-    for (auto it = nums.begin(); it != nums.end(); ++it) {
-        cout << *it;
-        if ((it + 1) != nums.end()) {
-            cout << ", ";
-        }
-    }
-    cout << "]";
-}
-
 int main()
 {
     vector<int> nums{2, 7, 11, 15};
     int target = 9;
 
     cout << "Input: nums = ";
-    print_vector(nums);
+    print_nums(nums);
     cout << ", target: " << target << endl;
 
     Solution s;
     vector<int> retval = s.twoSum(nums, target);
     cout << "Output: ";
-    print_vector(retval);
+    print_nums(retval);
     cout << endl;
 
     return 0;

@@ -1,11 +1,8 @@
 #include <iostream>
-using namespace std;
 
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
+#include "singly_linked_list.h"
+
+using namespace std;
 
 class Solution {
 public:
@@ -39,48 +36,21 @@ public:
     }
 };
 
-ListNode *build_nums(int n)
-{
-    ListNode dummy(0);
-    ListNode *p = &dummy;
-
-    while (n != 0) {
-        int val = n % 10;
-        n /=  10;
-        p-> next = new ListNode(val);
-        p = p->next;
-    }
-    return dummy.next;
-}
-
-void print_nums(ListNode *head)
-{
-    cout << "[";
-    while (head != NULL) {
-        cout << head->val;
-        if ( head->next != NULL ) {
-            cout << ", ";
-        }
-        head = head->next;
-    }
-    cout << "]";
-}
-
 int main()
 {
-    ListNode *l1 = build_nums(342);
+    ListNode *l1 = build_by_num(342);
     cout << "Input: l1 = ";
-    print_nums(l1);
-    ListNode *l2 = build_nums(465);
+    print_list(l1);
+    ListNode *l2 = build_by_num(465);
     cout << ", l2 = ";
-    print_nums(l2);
+    print_list(l2);
     cout << endl;
 
     Solution s;
     ListNode *retval = s.addTwoNumbers(l1, l2);
 
     cout << "Output: ";
-    print_nums(retval);
+    print_list(retval);
     cout << endl;
 
     return 0;
