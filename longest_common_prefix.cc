@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
+#include "utils.h"
+
 using namespace std;
 
 class Solution {
@@ -20,25 +23,13 @@ public:
     }
 };
 
-void print_vector(vector<string> strs)
-{
-    cout << "[";
-    for (auto it = strs.begin(); it != strs.end(); ++it) {
-        cout << *it;
-        if ((it + 1) != strs.end()) {
-            cout << ", ";
-        }
-    }
-    cout << "]";
-}
-
 int main()
 {
     Solution s;
 
     vector<string> strs{"flower", "flow", "flight"};
     cout << "Input: strs = ";
-    print_vector(strs);
+    print_strs(strs);
     cout << endl;
 
     string retval = s.longestCommonPrefix(strs);

@@ -1,6 +1,9 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+
+#include "utils.h"
+
 using namespace std;
 
 class Solution {
@@ -46,45 +49,19 @@ public:
     }
 };
 
-void print_vector(vector<int> nums)
-{
-    cout << "[";
-    for (auto it = nums.begin(); it != nums.end(); ++it) {
-        cout << *it;
-        if ((it + 1) != nums.end()) {
-            cout << ", ";
-        }
-    }
-    cout << "]";
-}
-
-void print_result(vector<vector<int>> nums)
-{
-    cout << "[" << endl;
-    for (auto it = nums.begin(); it != nums.end(); ++it) {
-        cout << "   ";
-        print_vector(*it);
-        if ((it + 1) != nums.end()) {
-            cout << ", ";
-        }
-        cout << endl;
-    }
-    cout << "]";
-}
-
 int main()
 {
     Solution s;
 
     vector<int> nums{-1, 0, 1, 2, -1, -4};
     cout << "Input: " << endl;
-    print_vector(nums);
+    print_nums(nums);
     cout << endl;
 
     auto retval = s.threeSum(nums);
 
     cout << "Output: " << endl;
-    print_result(retval);
+    print_nums_array(retval);
     cout << endl;
 
     return 0;

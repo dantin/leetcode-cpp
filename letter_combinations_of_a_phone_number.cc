@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
+#include "utils.h"
+
 using namespace std;
 
 class Solution {
@@ -29,6 +32,7 @@ public:
 
         return retval;
     }
+
 private:
     void combinations(vector<string> &retval, string tmp, string digits, vector<string> dictionary, size_t level) {
         if (level == digits.size()) {
@@ -44,18 +48,6 @@ private:
     }
 };
 
-void print_vector(vector<string> nums)
-{
-    cout << "[";
-    for (auto it = nums.begin(); it != nums.end(); ++it) {
-        cout << "\"" << *it << "\"";
-        if ((it + 1) != nums.end()) {
-            cout << ", ";
-        }
-    }
-    cout << "]";
-}
-
 int main()
 {
     Solution s;
@@ -65,7 +57,7 @@ int main()
     vector<string> retval = s.letterCombinations(digits);
 
     cout << "Output: ";
-    print_vector(retval);
+    print_strs(retval);
     cout << endl;
     return 0;
 }

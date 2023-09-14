@@ -1,6 +1,9 @@
 #include <iostream>
 #include <utility>
 #include <vector>
+
+#include "utils.h"
+
 using namespace std;
 
 class Solution {
@@ -53,18 +56,6 @@ private:
         }
     }
 };
-
-void print_nums(vector<int> &nums)
-{
-    cout << "[";
-    for (auto it = nums.begin(); it != nums.end(); ++it) {
-        cout << *it;
-        if ((it + 1) != nums.end()) {
-            cout << ", ";
-        }
-    }
-    cout << "]";
-}
 
 int main()
 {

@@ -1,6 +1,9 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+
+#include "utils.h"
+
 using namespace std;
 
 class Solution {
@@ -24,18 +27,6 @@ public:
     }
 };
 
-void print_vector(vector<int> nums)
-{
-    cout << "[";
-    for (auto it = nums.begin(); it != nums.end(); ++it) {
-        cout << *it;
-        if ((it + 1) != nums.end()) {
-            cout << ", ";
-        }
-    }
-    cout << "]";
-}
-
 int main()
 {
     Solution s;
@@ -43,7 +34,7 @@ int main()
     vector<int> height{1, 8, 6, 2, 5, 4, 8, 3, 7};
 
     cout << "Input: height = ";
-    print_vector(height);
+    print_nums(height);
     cout << endl;
 
     int retval = s.maxArea(height);

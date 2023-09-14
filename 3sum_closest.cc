@@ -2,6 +2,9 @@
 #include <climits>
 #include <iostream>
 #include <vector>
+
+#include "utils.h"
+
 using namespace std;
 
 class Solution {
@@ -46,18 +49,6 @@ public:
     }
 };
 
-void print_vector(vector<int> nums)
-{
-    cout << "[";
-    for (auto it = nums.begin(); it != nums.end(); ++it) {
-        cout << *it;
-        if ((it + 1) != nums.end()) {
-            cout << ", ";
-        }
-    }
-    cout << "]";
-}
-
 int main()
 {
     Solution s;
@@ -65,7 +56,7 @@ int main()
     int target = 1;
 
     cout << "Input: nums = ";
-    print_vector(nums);
+    print_nums(nums);
     cout << ", target = " << target << endl;
 
     int retval = s.threeSumClosest(nums, target);
