@@ -46,11 +46,11 @@ int main()
     };
     Solution s;
 
-    for (auto it = cases.begin(); it != cases.end(); it++) {
-        ListNode *l1 = build_by_values(it->first);
+    for (auto c : cases) {
+        ListNode *l1 = build_by_values(c.first);
         cout << "Input: l1 = ";
         print_list(l1);
-        ListNode *l2 = build_by_values(it->second);
+        ListNode *l2 = build_by_values(c.second);
         cout << ", l2 = ";
         print_list(l2);
         cout << endl;
