@@ -35,9 +35,9 @@ int main()
     };
     Solution s;
 
-    for (auto it = cases.begin(); it != cases.end(); it++) {
-        vector<int> nums = it->first;
-        int target = it->second;
+    for (auto &c : cases) {
+        vector<int> nums = c.first;
+        int target = c.second;
 
         cout << "Input: nums = ";
         print_nums(nums);

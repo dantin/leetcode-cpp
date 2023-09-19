@@ -1,39 +1,48 @@
 #include <algorithm>
 #include <iostream>
 #include <string>
-#include <unordered_set>
+#include <vector>
+#include <unordered_map>
 using namespace std;
 
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
+        unordered_map<char, int> window;
         int retval = 0;
-        unordered_set<int> cache;
+        int length = 0;
 
-        size_t i = 0, j = 0;
-        while (i < s.size() && j < s.size()) {
-            if (!cache.count(s[j])) {
-                cache.insert(s[j]);
-                j++;
-                retval = max(retval, (int)(j - i));
-            } else {
-                cache.erase(s[i]);
+        size_t i = 0;
+        while (i < s.size()) {
+            const char c = s[i];
+            if (window.find(c) == window.end()) {
+                window[c] = i;
+                length++;
                 i++;
+            } else {
+                retval = max(retval, length);
+                i = window[c] + 1;
+                length = 0;
+                window.clear();
             }
         }
 
-        return retval;
+        return max(retval, length);
     }
 };
 
 int main()
 {
-    string str = "abcabcbb";
-    cout << "Input: " << str << endl;
-
     Solution s;
-    int size = s.lengthOfLongestSubstring(str);
-    cout << "Output: " << size << endl;
+    vector<string> cases{"abcabcbb", "bbbbb", "pwwkew"};
+
+    for (auto it = cases.begin(); it != cases.end(); ++it) {
+        string str = *it;
+        cout << "Input: " << str << endl;
+
+        int size = s.lengthOfLongestSubstring(str);
+        cout << "Output: " << size << endl << endl;
+    }
 
     return 0;
 }
