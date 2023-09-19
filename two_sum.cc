@@ -1,5 +1,6 @@
 #include <iostream>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 #include "utils.h"
@@ -27,18 +28,26 @@ public:
 
 int main()
 {
-    vector<int> nums{2, 7, 11, 15};
-    int target = 9;
-
-    cout << "Input: nums = ";
-    print_nums(nums);
-    cout << ", target: " << target << endl;
-
+    vector<pair<vector<int>, int>> cases{
+        {{2, 7, 11, 15}, 9},
+        {{3, 2, 4}, 6},
+        {{3, 3}, 6},
+    };
     Solution s;
-    vector<int> retval = s.twoSum(nums, target);
-    cout << "Output: ";
-    print_nums(retval);
-    cout << endl;
+
+    for (auto it = cases.begin(); it != cases.end(); it++) {
+        vector<int> nums = it->first;
+        int target = it->second;
+
+        cout << "Input: nums = ";
+        print_nums(nums);
+        cout << ", target: " << target << endl;
+
+        vector<int> retval = s.twoSum(nums, target);
+        cout << "Output: ";
+        print_nums(retval);
+        cout << endl << endl;
+    }
 
     return 0;
 }
