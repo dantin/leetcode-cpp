@@ -44,13 +44,13 @@ int main()
 
     vector<int> nums{1, 2, 3};
     cout << "Input: ";
-    print_nums(nums);
+    print_array(nums);
     cout << endl;
 
     s.nextPermutation(nums);
 
     cout << "Output: ";
-    print_nums(nums);
+    print_array(nums);
     cout << endl;
 
     return 0;

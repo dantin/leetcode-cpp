@@ -57,7 +57,7 @@ int main()
     vector<string> retval = s.letterCombinations(digits);
 
     cout << "Output: ";
-    print_strs(retval);
+    print_array(retval);
     cout << endl;
     return 0;
 }

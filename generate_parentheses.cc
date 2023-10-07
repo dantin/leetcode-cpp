@@ -41,7 +41,7 @@ int main()
     vector<string> retval = s.generateParenthesis(n);
 
     cout << "Output:" << endl;
-    print_strs(retval);
+    print_array(retval);
     cout << endl;
 
     return 0;

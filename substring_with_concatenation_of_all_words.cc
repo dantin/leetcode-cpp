@@ -55,13 +55,13 @@ int main()
     string str = "barfoothefoobarman";
     vector<string> words{"bar", "foo"};
     cout << "Input: s = \"" << str << "\", words = ";
-    print_strs(words);
+    print_array(words);
     cout << endl;
 
     vector<int> retval = s.findSubstring(str, words);
 
     cout << "Output: ";
-    print_nums(retval);
+    print_array(retval);
     cout << endl;
 
     return 0;

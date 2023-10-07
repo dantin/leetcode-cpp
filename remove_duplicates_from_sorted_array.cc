@@ -27,14 +27,14 @@ int main()
 {
     vector<int> nums{1, 1, 2};
     cout << "Input: nums = ";
-    print_nums(nums);
+    print_array(nums);
     cout << endl;
 
     Solution s;
     int retval = s.removeDuplicates(nums);
 
     cout << "Output: " << retval << ", nums = ";
-    print_nums(nums);
+    print_array(nums);
     cout << endl;
 
     return 0;

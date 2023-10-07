@@ -50,7 +50,7 @@ int main()
     vector<int> candidates{2, 3, 6, 7};
     int target = 7;
     cout << "Input: " << endl;
-    print_nums(candidates);
+    print_array(candidates);
     cout << ", target = " << target;
     cout << endl;
 

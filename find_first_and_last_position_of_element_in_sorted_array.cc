@@ -47,13 +47,13 @@ int main()
 
     for (auto &c : cases) {
         cout << "Input: nums = ";
-        print_nums(c.first);
+        print_array(c.first);
         cout << ", target = " << c.second << endl;
 
         vector<int> retval = s.searchRange(c.first, c.second);
 
         cout << "Output: ";
-        print_nums(retval);
+        print_array(retval);
         cout << endl << endl;
     }
     return 0;

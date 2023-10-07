@@ -29,7 +29,7 @@ int main()
 
     vector<string> strs{"flower", "flow", "flight"};
     cout << "Input: strs = ";
-    print_strs(strs);
+    print_array(strs);
     cout << endl;
 
     string retval = s.longestCommonPrefix(strs);

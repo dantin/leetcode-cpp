@@ -35,7 +35,7 @@ int main()
 
     for (auto &c : cases) {
         cout << "Input: nums = ";
-        print_nums(c.first);
+        print_array(c.first);
         cout << ", target = " << c.second << endl;
 
         int retval = s.searchInsert(c.first, c.second);

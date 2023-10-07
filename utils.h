@@ -5,24 +5,13 @@
 #include <string>
 #include <vector>
 
-void print_nums(std::vector<int> nums)
+template<typename T>
+void print_array(T const &xs)
 {
     std::cout << "[";
-    for (auto it = nums.begin(); it != nums.end(); ++it) {
+    for (auto it = xs.begin(); it != xs.end(); ++it) {
         std::cout << *it;
-        if ((it + 1) != nums.end()) {
-            std::cout << ", ";
-        }
-    }
-    std::cout << "]";
-}
-
-void print_strs(std::vector<std::string> strs)
-{
-    std::cout << "[";
-    for (auto it = strs.begin(); it != strs.end(); ++it) {
-        std::cout << "\"" << *it << "\"";
-        if ((it + 1) != strs.end()) {
+        if ((it + 1) != xs.end()) {
             std::cout << ", ";
         }
     }
@@ -34,7 +23,7 @@ void print_nums_array(std::vector<std::vector<int>> nums)
     std::cout << "[" << std::endl;
     for (auto it = nums.begin(); it != nums.end(); ++it) {
         std::cout << "   ";
-        print_nums(*it);
+        print_array(*it);
         if ((it + 1) != nums.end()) {
             std::cout << ", ";
         }
