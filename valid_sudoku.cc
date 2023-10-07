@@ -1,5 +1,8 @@
 #include <iostream>
 #include <vector>
+
+#include "utils.h"
+
 using namespace std;
 
 class Solution {
@@ -35,25 +38,6 @@ public:
         return true;
     }
 };
-
-void print_board(vector<vector<char>> &board)
-{
-    cout << "[";
-    for (auto rit = board.begin(); rit != board.end(); ++rit) {
-        if (rit != board.begin()) {
-            cout << endl << ",";
-        }
-        cout << "[";
-        for (auto cit = rit->begin(); cit != rit->end(); ++cit) {
-            if (cit != rit->begin()) {
-                cout << ", ";
-            }
-            cout << "\"" << *cit << "\"";
-        }
-        cout << "]";
-    }
-    cout << "]" << endl;
-}
 
 int main()
 {

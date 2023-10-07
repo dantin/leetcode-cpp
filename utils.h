@@ -43,4 +43,23 @@ void print_nums_array(std::vector<std::vector<int>> nums)
     std::cout << "]";
 }
 
+void print_board(std::vector<std::vector<char>> &board)
+{
+    std::cout << "[";
+    for (auto rit = board.begin(); rit != board.end(); ++rit) {
+        if (rit != board.begin()) {
+            std::cout << std::endl << ",";
+        }
+        std::cout << "[";
+        for (auto cit = rit->begin(); cit != rit->end(); ++cit) {
+            if (cit != rit->begin()) {
+                std::cout << ", ";
+            }
+            std::cout << "\"" << *cit << "\"";
+        }
+        std::cout << "]";
+    }
+    std::cout << "]" << std::endl;
+}
+
 #endif
