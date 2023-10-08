@@ -64,7 +64,7 @@ int main()
     int target = 0;
 
     cout << "Input: nums = ";
-    print_nums(nums);
+    print_array(nums);
     cout << ", target = " << target << endl;
 
     vector<vector<int>> retval = s.fourSum(nums, target);

@@ -34,7 +34,7 @@ int main()
     vector<int> height{1, 8, 6, 2, 5, 4, 8, 3, 7};
 
     cout << "Input: height = ";
-    print_nums(height);
+    print_array(height);
     cout << endl;
 
     int retval = s.maxArea(height);

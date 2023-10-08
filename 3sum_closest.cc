@@ -56,7 +56,7 @@ int main()
     int target = 1;
 
     cout << "Input: nums = ";
-    print_nums(nums);
+    print_array(nums);
     cout << ", target = " << target << endl;
 
     int retval = s.threeSumClosest(nums, target);

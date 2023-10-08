@@ -25,13 +25,13 @@ int main()
     int val = 3;
 
     cout << "Input: nums = ";
-    print_nums(nums);
+    print_array(nums);
     cout << ", val = " << val << endl;
 
     int retval = s.removeElement(nums, val);
 
     cout << "Output: " << retval << ", nums = ";
-    print_nums(nums);
+    print_array(nums);
     cout << endl;
 
     return 0;

@@ -40,12 +40,12 @@ int main()
         int target = c.second;
 
         cout << "Input: nums = ";
-        print_nums(nums);
+        print_array(nums);
         cout << ", target: " << target << endl;
 
         vector<int> retval = s.twoSum(nums, target);
         cout << "Output: ";
-        print_nums(retval);
+        print_array(retval);
         cout << endl << endl;
     }
 
