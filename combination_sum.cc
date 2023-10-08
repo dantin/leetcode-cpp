@@ -46,19 +46,26 @@ private:
 int main()
 {
     Solution s;
+    vector<pair<vector<int>, int>> cases{
+        {{2, 3, 6, 7}, 7},
+        {{2, 3, 5}, 8},
+    };
 
-    vector<int> candidates{2, 3, 6, 7};
-    int target = 7;
-    cout << "Input: " << endl;
-    print_array(candidates);
-    cout << ", target = " << target;
-    cout << endl;
+    for (auto c : cases) {
+        vector<int> candidates = c.first;
+        int target = c.second;
 
-    auto retval = s.combinationSum(candidates, target);
+        cout << "Input: candidates = ";
+        print_array(candidates);
+        cout << ", target = " << target;
+        cout << endl;
 
-    cout << "Output: " << endl;
-    print_nums_array(retval);
-    cout << endl;
+        auto retval = s.combinationSum(candidates, target);
+
+        cout << "Output: " << endl;
+        print_nums_array(retval);
+        cout << endl << endl;
+    }
 
     return 0;
 }
