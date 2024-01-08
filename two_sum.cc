@@ -12,15 +12,13 @@ public:
     vector<int> twoSum(vector<int> &nums, int target) {
         vector<int> retval;
         unordered_map<int, int> cache;
-        for (int i = 0; (size_t) i < nums.size(); i++) {
-            cache[nums[i]] = i;
-        }
-        for (int j = 0; (size_t)j < nums.size(); j++) {
-            if (cache.find(target - nums[j]) != cache.end() && cache[target - nums[j]] != j) {
-                retval.push_back(j);
-                retval.push_back(cache[target - nums[j]]);
+        for (int i = 0; (size_t)i < nums.size(); i++) {
+            if (cache.find(target - nums[i]) != cache.end() && cache[target - nums[i]] != i) {
+                retval.push_back(i);
+                retval.push_back(cache[target - nums[i]]);
                 break;
             }
+            cache[nums[i]] = i;
         }
         return retval;
     }
