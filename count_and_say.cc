@@ -2,43 +2,43 @@
 using namespace std;
 
 class Solution {
-public:
-    string countAndSay(int n) {
-        string retval("1");
+ public:
+  string countAndSay(int n) {
+    string retval("1");
 
-        while (--n) {
-            retval = getNext(retval);
-        }
+    while (--n) {
+      retval = getNext(retval);
+    }
 
-        return retval;
+    return retval;
+  }
+
+ private:
+  string getNext(const string &s) {
+    stringstream ss;
+    auto i = s.begin();
+    while (i != s.end()) {
+      auto j = i;
+      while (j != s.end() && *j == *i) {
+        j++;
+      }
+      ss << distance(i, j) << *i;
+      i = j;
     }
-private:
-    string getNext(const string &s) {
-        stringstream ss;
-        auto i = s.begin();
-        while (i != s.end()) {
-            auto j = i;
-            while (j != s.end() && *j == *i) {
-                j++;
-            }
-            ss << distance(i, j) << *i;
-            i = j;
-        }
-        return ss.str();
-    }
+    return ss.str();
+  }
 };
 
-int main()
-{
-    vector<int> cases{1, 4};
-    Solution s;
+int main() {
+  vector<int> cases{1, 4};
+  Solution s;
 
-    for (auto &n : cases) {
-        cout << "Input: n = " << n << endl;
+  for (auto &n : cases) {
+    cout << "Input: n = " << n << endl;
 
-        string retval = s.countAndSay(n);
+    string retval = s.countAndSay(n);
 
-        cout << "Output: \"" << retval << "\"" << endl << endl;
-    }
-    return 0;
+    cout << "Output: \"" << retval << "\"" << endl << endl;
+  }
+  return 0;
 }
