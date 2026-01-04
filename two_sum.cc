@@ -7,19 +7,15 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int> &nums, int target) {
-        vector<int> retval;
-        unordered_map<int, int> cache;
-        for (int i = 0; (size_t) i < nums.size(); i++) {
+        map<int, int> cache;
+        for (size_t i = 0; i < nums.size(); i++) {
+            int complement = target - nums[i];
+            if (cache.find(complement) != cache.end()) {
+                return {static_cast<int>(cache[complement]), static_cast<int>(i)};
+            }
             cache[nums[i]] = i;
         }
-        for (int j = 0; (size_t)j < nums.size(); j++) {
-            if (cache.find(target - nums[j]) != cache.end() && cache[target - nums[j]] != j) {
-                retval.push_back(j);
-                retval.push_back(cache[target - nums[j]]);
-                break;
-            }
-        }
-        return retval;
+        return {};
     }
 };
 
