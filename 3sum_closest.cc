@@ -1,7 +1,5 @@
 #include <algorithm>
-#include <climits>
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 
 #include "utils.h"
 

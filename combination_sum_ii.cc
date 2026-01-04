@@ -1,8 +1,5 @@
 #include <algorithm>
-#include <iostream>
-#include <utility>
-#include <vector>
-
+#include <bits/stdc++.h>
 #include "utils.h"
 
 using namespace std;

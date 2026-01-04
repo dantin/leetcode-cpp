@@ -1,18 +1,29 @@
+# Compiler and flags
 CC = g++
-CFLAGS=-Wall -g
+CFLAGS = -Wall -g
 
-SRCS := $(wildcard *.cc)
-# This is a substitution reference. http://www.gnu.org/software/make/manual/make.html#Substitution-Refs
-BINS := $(SRCS:%.cc=bin/%)
+# Source files: find all .cc files in the current directory
+SOURCE_FILES := $(wildcard *.cc)
 
-# Tell make that the all target has every binary as a prequisite and tell make that it will not create an `all` file (see http://www.gnu.org/software/make/manual/make.html#Phony-Targets).
-.PHONY: all
-all: $(BINS)
+# Binary targets: convert each .cc file to a binary in bin/ directory
+# Example: add_two_numbers.cc -> bin/add_two_numbers
+BINARY_TARGETS := $(SOURCE_FILES:%.cc=bin/%)
 
-$(BINS) : bin/% : % | bin
-	@mv $^ $@
+# Phony targets (targets that don't create files with the same name)
+.PHONY: all clean
 
-# %.cc.o: %.cc
-#	$(CC) -c $< -o $@
+# Default target: build all binaries
+all: $(BINARY_TARGETS)
+
+# Create bin directory if it doesn't exist
+bin:
+	@mkdir -p bin
+
+# Pattern rule: compile each .cc file into a binary in bin/
+# The | bin ensures the bin directory exists before compilation
+bin/%: %.cc | bin
+	$(CC) $(CFLAGS) $< -o $@
+
+# Clean target: remove all compiled binaries
 clean:
 	@rm -rf bin/*

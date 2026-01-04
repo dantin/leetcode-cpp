@@ -1,7 +1,4 @@
-#include <iostream>
-#include <utility>
-#include <vector>
-
+#include <bits/stdc++.h>
 #include "singly_linked_list.h"
 
 using namespace std;

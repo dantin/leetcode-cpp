@@ -1,8 +1,7 @@
 #ifndef SINGLY_LINKED_LIST
 #define SINGLY_LINKED_LIST
 
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 
 /**
  * Definition for singly-linked list.

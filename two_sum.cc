@@ -1,7 +1,4 @@
-#include <iostream>
-#include <unordered_map>
-#include <utility>
-#include <vector>
+#include <bits/stdc++.h>
 
 #include "utils.h"
 
