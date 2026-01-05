@@ -1,6 +1,6 @@
 # Compiler and flags
-CC = g++
-CFLAGS = -Wall -g
+CXX = g++
+CXXFLAGS = -Wall -g
 
 # Source files: find all .cc files in the current directory
 SOURCE_FILES := $(wildcard *.cc)
@@ -32,7 +32,7 @@ bin:
 # The | bin ensures the bin directory exists before compilation
 bin/%: %.cc | bin
 	@echo "Compiling $<..."
-	$(CC) $(CFLAGS) $< -o $@
+	$(CXX) $(CXXFLAGS) $< -o $@
 	@echo "Done."
 
 # Clean target: remove all compiled binaries

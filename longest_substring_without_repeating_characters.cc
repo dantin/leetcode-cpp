@@ -6,26 +6,22 @@ using namespace std;
 class Solution {
  public:
   int lengthOfLongestSubstring(string s) {
-    unordered_map<char, int> window;
-    int retval = 0;
-    int length = 0;
+    int max_length = 0;
+    map<char, size_t> char_index;
+    size_t left = 0;
 
-    size_t i = 0;
-    while (i < s.size()) {
-      const char c = s[i];
-      if (window.find(c) == window.end()) {
-        window[c] = i;
-        length++;
-        i++;
-      } else {
-        retval = max(retval, length);
-        i = window[c] + 1;
-        length = 0;
-        window.clear();
+    for (size_t right = 0; right < s.size(); right++) {
+      char c = s[right];
+      // If character is already in the window, move left pointer
+      // to the position right after the last occurrence of this character
+      if (char_index.find(c) != char_index.end() && char_index[c] >= left) {
+        left = char_index[c] + 1;
       }
+      char_index[c] = right;
+      max_length = max(max_length, static_cast<int>(right - left + 1));
     }
 
-    return max(retval, length);
+    return max_length;
   }
 };
 
