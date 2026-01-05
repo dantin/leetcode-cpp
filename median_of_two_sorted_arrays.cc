@@ -25,32 +25,31 @@ class Solution {
               vector<int> &nums2, size_t begin2, size_t end2, size_t k) {
     size_t n = end1 - begin1;
     size_t m = end2 - begin2;
-    if (n <= 0) {
+
+    // Base cases: if one array is empty, return from the other
+    if (n == 0) {
       return nums2[begin2 + k - 1];
     }
-    if (m <= 0) {
+    if (m == 0) {
       return nums1[begin1 + k - 1];
     }
     if (k == 1) {
-      return nums1[begin1] < nums2[begin2] ? nums1[begin1] : nums2[begin2];
+      return min(nums1[begin1], nums2[begin2]);
     }
-    size_t mid1 = (begin1 + end1) / 2;
-    size_t mid2 = (begin2 + end2) / 2;
-    if (nums1[mid1] <= nums2[mid2]) {
-      if (n / 2 + m / 2 + 1 >= k) {
-        return findKth(nums1, begin1, end1, nums2, begin2, mid2, k);
-      } else {
-        return findKth(nums1, mid1 + 1, end1, nums2, begin2, end2,
-                       k - n / 2 - 1);
-      }
 
+    // Try to discard k/2 elements from one of the arrays
+    // Make sure we don't go out of bounds
+    size_t i = begin1 + min(k / 2, n) - 1;
+    size_t j = begin2 + min(k / 2, m) - 1;
+
+    if (nums1[i] <= nums2[j]) {
+      // Discard the first min(k/2, n) elements from nums1
+      size_t discarded = i - begin1 + 1;
+      return findKth(nums1, i + 1, end1, nums2, begin2, end2, k - discarded);
     } else {
-      if (n / 2 + m / 2 + 1 >= k) {
-        return findKth(nums1, begin1, mid1, nums2, begin2, end2, k);
-      } else {
-        return findKth(nums1, begin1, end1, nums2, mid2 + 1, end2,
-                       k - m / 2 - 1);
-      }
+      // Discard the first min(k/2, m) elements from nums2
+      size_t discarded = j - begin2 + 1;
+      return findKth(nums1, begin1, end1, nums2, j + 1, end2, k - discarded);
     }
   }
 };
