@@ -2,10 +2,9 @@
 CXX = g++
 CXXFLAGS = -Wall -g
 
-# Source files: find all .cc files in the current directory
-SOURCE_FILES := $(wildcard *.cc)
+# Source files: find all .cc and .h files in the current directory
+SOURCE_FILES := $(wildcard *.cc *.h)
 CLANG_FORMAT := clang-format
-SRC := $(shell find . -name "*.cc" -o -name "*.h")
 
 # Binary targets: convert each .cc file to a binary in bin/ directory
 # Example: add_two_numbers.cc -> bin/add_two_numbers
@@ -16,7 +15,7 @@ BINARY_TARGETS := $(SOURCE_FILES:%.cc=bin/%)
 
 format:
 	@echo "Formatting source files..."
-	@$(CLANG_FORMAT) -i $(SRC)
+	@$(CLANG_FORMAT) -i $(SOURCE_FILES)
 	@echo "Done."
 
 # Default target: build all binaries
