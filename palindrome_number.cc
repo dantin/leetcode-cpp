@@ -19,8 +19,7 @@ class Solution {
       if (q != r) {
         return false;
       }
-      // x <- x % (d / 10)
-      x = x % d / 10;
+      x = (x % d) / 10;
       d /= 100;
     }
 
