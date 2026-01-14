@@ -9,7 +9,8 @@ class Solution {
                        "XL", "X",  "IX", "V",  "IV", "I"};
 
     string retval;
-    for (size_t i = 0; num > 0; i++) {
+    const size_t n = sizeof(radix) / sizeof(radix[0]);
+    for (size_t i = 0; i < n && num > 0; i++) {
       int c = num / radix[i];
       num %= radix[i];
       while (c > 0) {
