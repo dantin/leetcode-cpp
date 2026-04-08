@@ -9,14 +9,18 @@ class Solution {
     }
 
     string retval;
-    auto n = s.size();
-    int cycleLen = 2 * numRows - 2;
+    size_t n = s.size();
+    size_t cycleLen = 2 * static_cast<size_t>(numRows) - 2;
 
     for (int i = 0; i < numRows; i++) {
-      for (size_t j = 0; j + i < n; j += cycleLen) {
-        retval += s[j + i];
-        if (i != 0 && i != numRows - 1 && j + cycleLen - i < n) {
-          retval += s[j + cycleLen - i];
+      for (size_t j = 0; j + static_cast<size_t>(i) < n; j += cycleLen) {
+        retval += s[j + static_cast<size_t>(i)];
+        // For middle rows, add the diagonal character
+        if (i != 0 && i != numRows - 1) {
+          size_t diagonalIdx = j + cycleLen - static_cast<size_t>(i);
+          if (diagonalIdx < n) {
+            retval += s[diagonalIdx];
+          }
         }
       }
     }

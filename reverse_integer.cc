@@ -4,33 +4,22 @@ using namespace std;
 class Solution {
  public:
   int reverse(int x) {
-    long long temp = x;
-    bool sign;
-    if (x < 0) {
-      sign = false;
-      temp = -temp;
-    } else {
-      sign = true;
+    long long retval = 0;
+    const int INT_MAX_VAL = 2147483647;
+    const long long INT_MIN_ABS = 2147483648LL;
+
+    while (x != 0) {
+      retval = retval * 10 + x % 10;
+      x /= 10;
     }
 
-    long long retval = 0;
-    while (temp != 0) {
-      int n = temp % 10;
-      retval += n;
-      temp /= 10;
-      if (temp == 0) {
-        break;
-      }
-      retval *= 10;
-    }
-    if (retval > 2147483647 || (!sign && retval > 2147483648)) {
+    // Check for overflow: positive numbers must be <= INT_MAX
+    // negative numbers (when reversed) must have abs <= INT_MIN_ABS
+    if (retval > INT_MAX_VAL || retval < -INT_MIN_ABS) {
       return 0;
     }
-    if (sign) {
-      return retval;
-    } else {
-      return -retval;
-    }
+
+    return static_cast<int>(retval);
   }
 };
 
@@ -42,7 +31,7 @@ int main() {
 
   int x = s.reverse(n);
 
-  cout << "Ouput: " << x << endl;
+  cout << "Output: " << x << endl;
 
   return 0;
 }
