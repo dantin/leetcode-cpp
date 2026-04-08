@@ -2,6 +2,8 @@ import argparse
 import configparser
 import json
 import logging
+import random
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -163,7 +165,6 @@ def fetch_problem_detail(problem: Problem, cookies: dict[str, str]) -> Problem:
     response.raise_for_status()
 
     data = response.json()
-    print(json.dumps(data, indent=2))
     question_data = data.get("data", {}).get("question", {})
 
     # 1 & 2. Generate Markdown document from HTML content and set to Problem.description
@@ -193,10 +194,20 @@ def persist_problem(problem: Problem, root_dir: Path):
     src_dir.mkdir(parents=True, exist_ok=True)
 
     problem_md = src_dir / "problem.md"
-    problem_md.write_text(problem.description, encoding="utf-8")
+    problem_md_content = f"# {problem.title}\n\n{problem.description}\n"
+    problem_md.write_text(problem_md_content, encoding="utf-8")
 
     solution_hpp = src_dir / "solution.hpp"
-    solution_hpp.write_text(problem.solution, encoding="utf-8")
+    solution_hpp_content = f"""#ifndef SOLUTION_HPP
+#define SOLUTION_HPP
+
+#include <bits/stdc++.h>
+
+{problem.solution}
+
+#endif
+"""
+    solution_hpp.write_text(solution_hpp_content, encoding="utf-8")
 
 
 def generate_problemset(problems: list[Problem], root_dir: Path):
@@ -254,6 +265,7 @@ if __name__ == "__main__":
     cfg_path = Path(__file__).parent / "config.ini"
     if not cfg_path.exists():
         raise FileNotFoundError(f"Config file not found at {cfg_path}")
+
     cookies = load_cookies(cfg_path)
     if not cookies:
         logger.error("No cookies found in config.ini")
@@ -268,6 +280,7 @@ if __name__ == "__main__":
             logger.error(f"Problem with ID {args.problem_id} not found.")
             exit(1)
 
+        time.sleep(random.randint(1, 3))
         logger.info(f"Fetching problem: {target_problem.title} ({target_problem.pid})")
         target_problem = fetch_problem_detail(target_problem, cookies)
         persist_problem(target_problem, root_dir)
