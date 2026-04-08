@@ -280,7 +280,7 @@ if __name__ == "__main__":
             logger.error(f"Problem with ID {args.problem_id} not found.")
             exit(1)
 
-        time.sleep(random.randint(1, 3))
+        time.sleep(random.randint(2, 5))
         logger.info(f"Fetching problem: {target_problem.title} ({target_problem.pid})")
         target_problem = fetch_problem_detail(target_problem, cookies)
         persist_problem(target_problem, root_dir)
