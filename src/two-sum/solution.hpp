@@ -4,8 +4,9 @@
 #include <bits/stdc++.h>
 
 class Solution {
-public:
-    std::vector<int> twoSum(std::vector<int>& nums, int target) {
+   public:
+    std::vector<int> twoSum(std::vector<int>& nums, int target)
+    {
         std::map<int, int> cache;
         for (size_t i = 0; i < nums.size(); i++) {
             int complement = target - nums[i];

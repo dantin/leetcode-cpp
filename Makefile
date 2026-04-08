@@ -29,7 +29,15 @@ bin/%: src/%/main.cpp | bin
 	@echo "Done."
 
 # Format source files
-fmt:
+fmt: fmt-cpp fmt-py
+
+fmt-py: sync.py
+	@echo "Formatting Python files..."
+	@black sync.py
+	@isort sync.py
+	@echo "Done."
+
+fmt-cpp:
 	@echo "Formatting source files..."
 	@$(CLANG_FORMAT) -i $(SRC)
 	@echo "Done."
