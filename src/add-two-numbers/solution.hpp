@@ -70,4 +70,12 @@ void print_list(ListNode* head)
     std::cout << "]";
 }
 
+void clean_list(ListNode *head) {
+    while (head != nullptr) {
+      ListNode *node = head->next;
+      delete head;
+      head = node;
+    }
+  }
+  
 #endif
