@@ -1,14 +1,14 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -Wall -g
+CXXFLAGS = -Wall -g -std=c++17
 
-# Source files: find all .cc and .h files in the current directory
-SOURCE_FILES := $(wildcard *.cc *.h)
+# Source files: find all main.cpp files in the src directory
+SOURCE_FILES := $(wildcard src/*/main.cpp)
+SRC := $(shell find src -name "*.cpp" -o -name "*.hpp" -o -name "*.cc" -o -name "*.h" 2>/dev/null)
 CLANG_FORMAT := clang-format
 
-# Binary targets: convert each .cc file to a binary in bin/ directory
-# Example: add_two_numbers.cc -> bin/add_two_numbers
-BINARY_TARGETS := $(SOURCE_FILES:%.cc=bin/%)
+# Binary targets: extract <name> from src/<name>/main.cpp and create bin/<name>
+BINARY_TARGETS := $(patsubst src/%/main.cpp,bin/%,$(SOURCE_FILES))
 
 # Phony targets (targets that don't create files with the same name)
 .PHONY: all clean format
@@ -27,11 +27,24 @@ bin:
 	@mkdir -p bin
 	@echo "Done."
 
-# Pattern rule: compile each .cc file into a binary in bin/
-# The | bin ensures the bin directory exists before compilation
-bin/%: %.cc | bin
+# Pattern rule: compile src/<name>/main.cpp into bin/<name>
+bin/%: src/%/main.cpp | bin
 	@echo "Compiling $<..."
 	$(CXX) $(CXXFLAGS) $< -o $@
+	@echo "Done."
+
+# Format source files
+fmt: fmt-cpp fmt-py
+
+fmt-py: sync.py
+	@echo "Formatting Python files..."
+	@black sync.py
+	@isort sync.py
+	@echo "Done."
+
+fmt-cpp:
+	@echo "Formatting source files..."
+	@if [ -n "$(SRC)" ]; then $(CLANG_FORMAT) -i $(SRC); else echo "No source files to format."; fi
 	@echo "Done."
 
 # Clean target: remove all compiled binaries
