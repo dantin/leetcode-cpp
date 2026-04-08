@@ -2,8 +2,9 @@
 CXX = g++
 CXXFLAGS = -Wall -g -std=c++17
 
-# Source files: find all .cc and .h files in the current directory
-SOURCE_FILES := $(wildcard *.cc *.h)
+# Source files: find all main.cpp files in the src directory
+SOURCE_FILES := $(wildcard src/*/main.cpp)
+SRC := $(shell find src -name "*.cpp" -o -name "*.hpp" -o -name "*.cc" -o -name "*.h" 2>/dev/null)
 CLANG_FORMAT := clang-format
 
 # Binary targets: extract <name> from src/<name>/main.cpp and create bin/<name>
@@ -43,7 +44,7 @@ fmt-py: sync.py
 
 fmt-cpp:
 	@echo "Formatting source files..."
-	@$(CLANG_FORMAT) -i $(SRC)
+	@if [ -n "$(SRC)" ]; then $(CLANG_FORMAT) -i $(SRC); else echo "No source files to format."; fi
 	@echo "Done."
 
 # Clean target: remove all compiled binaries
