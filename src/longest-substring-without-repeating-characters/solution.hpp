@@ -13,7 +13,8 @@ class Solution {
         std::vector<int> char_index(128, -1);
         int left = 0;
 
-        for (int right = 0; right < s.size(); right++) {
+        int n = s.size();
+        for (int right = 0; right < n; right++) {
             char c = s[right];
             if (char_index[c] >= left) {
                 left = char_index[c] + 1;
