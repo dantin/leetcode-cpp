@@ -28,7 +28,7 @@ class Solution {
           (retval == INT_MAX / 10 && (s[i] - '0' > INT_MAX % 10))) {
         return sign == -1 ? INT_MIN : INT_MAX;
       }
-      retval = retval * 10 - '0' + s[i];
+      retval = retval * 10 + (s[i] - '0');
       i++;
     }
 

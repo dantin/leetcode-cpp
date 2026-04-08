@@ -4,6 +4,9 @@ using namespace std;
 class Solution {
  public:
   int romanToInt(string s) {
+    if (s.empty()) {
+      return 0;
+    }
     int retval = 0;
     retval = toInt(s[0]);
     for (size_t i = 1; i < s.length(); i++) {

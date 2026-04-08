@@ -2,16 +2,20 @@
 CXX = g++
 CXXFLAGS = -Wall -g -std=c++17
 
-# Find all main.cpp files under src/*/
-SOURCE_FILES := $(wildcard src/*/main.cpp)
+# Source files: find all .cc and .h files in the current directory
+SOURCE_FILES := $(wildcard *.cc *.h)
 CLANG_FORMAT := clang-format
-SRC := $(shell find src -name "*.cpp" -o -name "*.hpp")
 
 # Binary targets: extract <name> from src/<name>/main.cpp and create bin/<name>
 BINARY_TARGETS := $(patsubst src/%/main.cpp,bin/%,$(SOURCE_FILES))
 
-# Phony targets
-.PHONY: all clean fmt
+# Phony targets (targets that don't create files with the same name)
+.PHONY: all clean format
+
+format:
+	@echo "Formatting source files..."
+	@$(CLANG_FORMAT) -i $(SOURCE_FILES)
+	@echo "Done."
 
 # Default target: build all binaries
 all: $(BINARY_TARGETS)

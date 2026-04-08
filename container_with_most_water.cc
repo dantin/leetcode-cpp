@@ -11,6 +11,10 @@ class Solution {
   int maxArea(vector<int> &height) {
     int retval = 0;
 
+    if (height.size() < 2) {
+      return retval;
+    }
+
     size_t left = 0;
     size_t right = height.size() - 1;
     while (left < right) {
