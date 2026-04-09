@@ -201,7 +201,12 @@ def persist_problem(problem: Problem, root_dir: Path):
     solution_hpp_content = f"""#ifndef SOLUTION_HPP
 #define SOLUTION_HPP
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <algorithm>
 
 {problem.solution}
 
@@ -210,7 +215,9 @@ def persist_problem(problem: Problem, root_dir: Path):
     solution_hpp.write_text(solution_hpp_content, encoding="utf-8")
 
     main_cpp = src_dir / "main.cpp"
-    main_cpp_content = """#include <bits/stdc++.h>
+    main_cpp_content = """#include <iostream>
+#include <vector>
+#include <string>
 
 #include "solution.hpp"
 
@@ -295,7 +302,7 @@ if __name__ == "__main__":
             exit(1)
 
         # sleep for a random time between 2 and 5 seconds.
-        time.sleep(random.randint(2, 5))
+        time.sleep(random.randint(5, 10))
         logger.info(f"Fetching problem: {target_problem.title} ({target_problem.pid})")
         target_problem = fetch_problem_detail(target_problem, cookies)
         persist_problem(target_problem, root_dir)

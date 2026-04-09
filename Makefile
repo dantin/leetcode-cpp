@@ -11,12 +11,7 @@ CLANG_FORMAT := clang-format
 BINARY_TARGETS := $(patsubst src/%/main.cpp,bin/%,$(SOURCE_FILES))
 
 # Phony targets (targets that don't create files with the same name)
-.PHONY: all clean format
-
-format:
-	@echo "Formatting source files..."
-	@$(CLANG_FORMAT) -i $(SOURCE_FILES)
-	@echo "Done."
+.PHONY: all clean fmt
 
 # Default target: build all binaries
 all: $(BINARY_TARGETS)
@@ -44,7 +39,7 @@ fmt-py: sync.py
 
 fmt-cpp:
 	@echo "Formatting source files..."
-	@if [ -n "$(SRC)" ]; then $(CLANG_FORMAT) -i $(SRC); else echo "No source files to format."; fi
+	@if [ -n "$(SRC)" ]; then $(CLANG_FORMAT) -i --style=file:$(CURDIR)/.clang-format $(SRC); else echo "No source files to format."; fi
 	@echo "Done."
 
 # Clean target: remove all compiled binaries
