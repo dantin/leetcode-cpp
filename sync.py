@@ -209,6 +209,20 @@ def persist_problem(problem: Problem, root_dir: Path):
 """
     solution_hpp.write_text(solution_hpp_content, encoding="utf-8")
 
+    main_cpp = src_dir / "main.cpp"
+    main_cpp_content = """#include <bits/stdc++.h>
+
+#include "solution.hpp"
+
+using namespace std;
+
+int main()
+{
+    return 0;
+}
+"""
+    main_cpp.write_text(main_cpp_content, encoding="utf-8")
+
 
 def generate_problemset(problems: list[Problem], root_dir: Path):
     """
@@ -280,6 +294,7 @@ if __name__ == "__main__":
             logger.error(f"Problem with ID {args.problem_id} not found.")
             exit(1)
 
+        # sleep for a random time between 2 and 5 seconds.
         time.sleep(random.randint(2, 5))
         logger.info(f"Fetching problem: {target_problem.title} ({target_problem.pid})")
         target_problem = fetch_problem_detail(target_problem, cookies)
