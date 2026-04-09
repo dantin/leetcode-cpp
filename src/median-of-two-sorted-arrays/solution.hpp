@@ -59,7 +59,7 @@ void print_array(T const& xs)
     std::cout << "[";
     for (auto it = xs.begin(); it != xs.end(); ++it) {
         std::cout << *it;
-        if ((it + 1) != xs.end()) {
+        if (std::next(it) != xs.end()) {
             std::cout << ", ";
         }
     }
