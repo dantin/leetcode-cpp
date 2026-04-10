@@ -1,7 +1,12 @@
 #ifndef SOLUTION_HPP
 #define SOLUTION_HPP
 
-#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
+#include <unordered_map>
+#include <algorithm>
 
 /**
  * Definition for singly-linked list.
