@@ -14,9 +14,11 @@ class Solution {
             x /= 10;
 
             // Check for overflow before multiplying by 10 and adding pop
+            // Maximum value of INT_MAX is 2147483647
             if (retval > MAX_DIV_10 || (retval == MAX_DIV_10 && pop > 7)) {
                 return 0;
             }
+            // Minimum value of INT_MIN is -2147483648
             if (retval < MIN_DIV_10 || (retval == MIN_DIV_10 && pop < -8)) {
                 return 0;
             }
