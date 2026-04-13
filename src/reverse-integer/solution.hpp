@@ -6,8 +6,8 @@ class Solution {
     int reverse(int x)
     {
         int retval = 0;
-        const int MAX_DIV_10 = 214748364; // INT_MAX / 10
-        const int MIN_DIV_10 = -214748364; // INT_MIN / 10
+        const int MAX_DIV_10 = 214748364;   // INT_MAX / 10
+        const int MIN_DIV_10 = -214748364;  // INT_MIN / 10
 
         while (x != 0) {
             int pop = x % 10;
