@@ -1,6 +1,6 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -Wall -g -std=c++17
+CXXFLAGS = -Wall -O2 -std=c++17
 
 # Source files: find all main.cpp files in the src directory
 SOURCE_FILES := $(wildcard src/*/main.cpp)
