@@ -2,15 +2,15 @@
 #define UTILS_HPP
 
 #include <iostream>
-#include <string>
-#include <vector>
 #include <iterator>
+#include <string>
 #include <type_traits>
+#include <vector>
 
 /**
  * @file utils.hpp
  * @brief Common utility functions for LeetCode solutions
- * 
+ *
  * This header contains utility functions used across multiple LeetCode solution files
  * to avoid code duplication and maintain consistency.
  */
@@ -66,6 +66,6 @@ void print_array(const std::vector<T>& v)
     print_vector(v);
 }
 
-} // namespace utils
+}  // namespace utils
 
-#endif // UTILS_HPP
+#endif  // UTILS_HPP

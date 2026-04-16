@@ -1,8 +1,8 @@
 #include <iostream>
 #include <vector>
 
-#include "solution.hpp"
 #include "../utils.hpp"
+#include "solution.hpp"
 
 using namespace std;
 
