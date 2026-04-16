@@ -58,17 +58,4 @@ class Solution {
     }
 };
 
-template <typename T>
-void print_array(T const& xs)
-{
-    std::cout << "[";
-    for (auto it = xs.begin(); it != xs.end(); ++it) {
-        std::cout << *it;
-        if (std::next(it) != xs.end()) {
-            std::cout << ", ";
-        }
-    }
-    std::cout << "]";
-}
-
 #endif

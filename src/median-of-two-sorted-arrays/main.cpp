@@ -1,8 +1,8 @@
 #include <iostream>
-#include <string>
 #include <vector>
 
 #include "solution.hpp"
+#include "../utils.hpp"
 
 using namespace std;
 
@@ -21,10 +21,10 @@ int main()
 
         cout << "Input:" << endl;
         cout << " nums1 = ";
-        print_array(nums1);
+        utils::print_container(nums1);
         cout << endl;
         cout << " nums2 = ";
-        print_array(nums2);
+        utils::print_container(nums2);
         cout << endl;
 
         auto mid = s.findMedianSortedArrays(nums1, nums2);

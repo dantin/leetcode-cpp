@@ -1,27 +1,11 @@
 #include <iostream>
-#include <string>
 #include <vector>
 
 #include "solution.hpp"
+#include "../utils.hpp"
 
 using namespace std;
 
-template <typename T>
-void print_array(const vector<T>& v)
-{
-    cout << "[";
-    for (size_t i = 0; i < v.size(); ++i) {
-        if constexpr (is_same_v<T, string>) {
-            cout << "'" << v[i] << "'";
-        } else {
-            cout << v[i];
-        }
-        if (i != v.size() - 1) {
-            cout << ", ";
-        }
-    }
-    cout << "]";
-}
 
 int main()
 {
@@ -37,12 +21,12 @@ int main()
         int target = c.second;
 
         cout << "Input: nums = ";
-        print_array(nums);
+        utils::print_array(nums);
         cout << ", target: " << target << endl;
 
         vector<int> retval = s.twoSum(nums, target);
         cout << "Output: ";
-        print_array(retval);
+        utils::print_array(retval);
         cout << endl << endl;
     }
 
