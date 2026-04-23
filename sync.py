@@ -46,11 +46,11 @@ def fetch_all_problems(cookies: dict[str, str]) -> dict:
     Fetches all problems from LeetCode API, using a local cache to avoid HTTP request limits.
     """
     if CACHE_FILE.exists():
-        logger.debug("Fetching problems from cache...")
+        logger.info("Fetching problems from cache...")
         with open(CACHE_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
 
-    logger.debug("Cache not found. Fetching problems from LeetCode API...")
+    logger.info("Cache not found. Fetching problems from LeetCode API...")
     url = f"{BASE_URL}/api/problems/all/"
 
     headers = {
@@ -78,7 +78,7 @@ def fetch_all_problems(cookies: dict[str, str]) -> dict:
     return data
 
 
-def scrape_problems(cookies: dict[str, str]):
+def scrape_problems(cookies: dict[str, str]) -> list[Problem]:
     """
     scrape_problems extracts the problem list using the LeetCode API response
     """
@@ -302,7 +302,7 @@ if __name__ == "__main__":
             exit(1)
 
         # sleep for a random time between 2 and 5 seconds.
-        time.sleep(random.randint(5, 10))
+        time.sleep(random.randint(15, 20))
         logger.info(f"Fetching problem: {target_problem.title} ({target_problem.pid})")
         target_problem = fetch_problem_detail(target_problem, cookies)
         persist_problem(target_problem, root_dir)
